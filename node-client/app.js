@@ -1,0 +1,40 @@
+// Client Node.js — Interroge l'API Python et affiche un rapport des logs Azure
+// -----------------------------------------------------------------
+
+const path = require('path');
+
+// Configuration partagée chargée depuis config.json (à la racine du projet)
+// BUG 5 (suite) — Si l'API Python ne répond pas, vérifiez le port dans config.json
+const config = require(path.join(__dirname, '..', 'config.json'));
+const API_URL = `http://${config.api.host}:${config.api.port}${config.api.route}`;
+
+// BUG 6 — Le nom du module importé ici est incorrect
+const axioss = require('axioss');
+
+async function getLogs() {
+    try {
+        const response = await axioss.get(API_URL);
+
+        // BUG 7 — La propriété pour accéder au corps de la réponse avec axios
+        //         ne s'appelle pas .body — cherchez dans la doc axios comment
+        //         accéder aux données de la réponse
+        const data = response.body;
+
+        console.log('\n========================================');
+        console.log('   RAPPORT D\'ANALYSE DES LOGS AZURE    ');
+        console.log('========================================');
+        console.log(`  Erreurs detectees  : ${data.error_count}`);
+        console.log(`  Avertissements     : ${data.warning_count}`);
+        console.log(`  Messages info      : ${data.info_count}`);
+        console.log('\n--- Detail des erreurs ---');
+        data.errors.forEach(err => console.log(` > ${err}`));
+        console.log('\n--- Detail des avertissements ---');
+        data.warnings.forEach(warn => console.log(` > ${warn}`));
+        console.log('========================================\n');
+
+    } catch (error) {
+        console.error('Erreur de connexion a l\'API Python :', error.message);
+    }
+}
+
+getLogs();

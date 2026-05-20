@@ -1,0 +1,2 @@
+# BUG 1 — Le nom du paquet ci-dessous est incorrect. Lisez attentivement.
+flaskk==3.0.0
