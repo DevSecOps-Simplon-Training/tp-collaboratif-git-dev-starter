@@ -4,8 +4,8 @@
   "apprenants": [],
   "api": {
     "port": 5000,
-    "host": "localhost",
-    "route": "/api/logs",
+    "host": "python-api",
+    "route": "/",
     "log_file": "server.log"
   }
 }
