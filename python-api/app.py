@@ -14,12 +14,13 @@ with open(config_path, 'r') as f:
 # le nombre d'erreurs, warnings et infos détectés.
 # -------------------------------------------------------
 
+    log_file = config["api"]["log_file"]
+
 # BUG 2 — Il manque un caractère essentiel à la fin de cette ligne
-def parse_logs(filepath)
+def parse_logs(filepath):
     erreurs = []
     warnings = []
     infos = []
-
     with open(filepath, "r") as f:
         for line in f:
             line = line.strip()
@@ -28,7 +29,7 @@ def parse_logs(filepath)
             # BUG 3 — Le nom de la variable utilisée ici ne correspond pas
             #         à celle déclarée plus haut dans cette fonction
             if "ERROR" in line:
-                errors.append(line)
+                erreurs.append(line)
             elif "WARNING" in line:
                 warnings.append(line)
             elif "INFO" in line:
