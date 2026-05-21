@@ -50,7 +50,7 @@ def get_logs():
     erreur = verifier_cle_api()
     if erreur:
         return erreur
-    result = parse_logs("server.log")
+    result = parse_logs(config["api"]["log_file"])
     return jsonify(result), 200
 
 
