@@ -1,2 +1,3 @@
 # BUG 1 — Le nom du paquet ci-dessous est incorrect. Lisez attentivement.
-flaskk==3.0.0
+# DEBUG :  "flask" au lieu de "flaskk"
+flask==3.0.0
