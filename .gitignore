@@ -52,3 +52,7 @@ terraform.rc
 node_modules
 
 logs
+
+email-template.md
+
+venv
