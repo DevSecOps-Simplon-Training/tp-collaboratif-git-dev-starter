@@ -42,7 +42,7 @@ def parse_logs(filepath):
 
 @app.route("/api/logs", methods=["GET"])
 def get_logs():
-    result = parse_logs("server.log")
+    result = parse_logs(config["api"]["log_file"])
     return jsonify(result), 200
 
 
