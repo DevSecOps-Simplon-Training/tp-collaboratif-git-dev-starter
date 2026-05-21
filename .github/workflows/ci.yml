@@ -50,8 +50,7 @@ jobs:
           cd node-client
           npm install
 
-      - name: Vérifier la syntaxe JavaScript
+      - name: Run ESLint
         run: |
           cd node-client
-          node --check app.js
-          echo "Syntaxe JavaScript valide"
+          npx eslint app.js
