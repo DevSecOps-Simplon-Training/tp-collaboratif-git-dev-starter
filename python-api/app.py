@@ -39,13 +39,9 @@ def parse_logs(filepath):
         "warnings": warnings
     }
 
-# Clé API attendue — en production, cette valeur viendrait
-# d'une variable d'environnement Azure Key Vault, jamais en dur dans le code
-API_KEY = "devsecops-simplon-2024"
-
 def verifier_cle_api():
     cle = request.headers.get("X-API-Key")
-    if cle != API_KEY:
+    if cle != config["api"]["key"]:
         return jsonify({"erreur": "Clé API invalide ou manquante"}), 401
     return None
 
