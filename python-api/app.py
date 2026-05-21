@@ -42,9 +42,7 @@ def parse_logs(filepath):
 
 @app.route("/api/logs", methods=["GET"])
 def get_logs():
-    # BUG 4 — La variable passée en argument n'est définie nulle part
-    #         Quel fichier de logs doit-on analyser ?
-    result = parse_logs(log_file)
+    result = parse_logs("server.log")
     return jsonify(result), 200
 
 
