@@ -50,3 +50,9 @@ terraform.rc
 
 # Ignorer le dossier node_modules
 node_modules
+
+logs
+
+email-template.md
+
+venv

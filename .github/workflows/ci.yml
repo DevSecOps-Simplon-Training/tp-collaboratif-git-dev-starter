@@ -53,4 +53,4 @@ jobs:
       - name: Run ESLint
         run: |
           cd node-client
-          npx eslint app.js
+          npx eslint
