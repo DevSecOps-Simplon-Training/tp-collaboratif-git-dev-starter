@@ -4,16 +4,21 @@
 const path = require('path');
 
 // Configuration partagée chargée depuis config.json (à la racine du projet)
+// BUG 5 (suite) — Si l'API Python ne répond pas, vérifiez le port dans config.json
 const config = require(path.join(__dirname, '..', 'config.json'));
 const API_URL = `http://${config.api.host}:${config.api.port}${config.api.route}`;
 
-const axios = require('axios');
+// BUG 6 — Le nom du module importé ici est incorrect
+const axioss = require('axioss');
 
 async function getLogs() {
     try {
-        const response = await axios.get(API_URL);
+        const response = await axioss.get(API_URL);
 
-        const data = response.data;
+        // BUG 7 — La propriété pour accéder au corps de la réponse avec axios
+        //         ne s'appelle pas .body — cherchez dans la doc axios comment
+        //         accéder aux données de la réponse
+        const data = response.body;
 
         console.log('\n========================================');
         console.log('   RAPPORT D\'ANALYSE DES LOGS AZURE    ');
