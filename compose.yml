@@ -1,0 +1,19 @@
+services:
+  python-api:
+    build: ./python-api
+    ports:
+      - "5000:5000"
+    container_name: log-analyser-api
+    volumes:
+      - ./config.docker.json:/config.json
+    environment:
+      - FLASK_RUN_HOST=0.0.0.0
+    command: flask run --host=0.0.0.0
+
+  node-client:
+    build: ./node-client
+    container_name: log-analyser-client
+    depends_on:
+      - python-api
+    volumes:
+      - ./config.docker.json:/config.json
