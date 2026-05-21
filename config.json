@@ -4,7 +4,7 @@
   "apprenants": [],
   "api": {
     "port": 5001,
-    "host": "localhost",
+    "host": "python-api",
     "route": "/api/logs",
     "log_file": "server.log"
   }
