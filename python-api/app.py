@@ -16,7 +16,6 @@ log_file = "./server.log"
 # le nombre d'erreurs, warnings et infos détectés.
 # -------------------------------------------------------
 
-# BUG 2 — Il manque un caractère essentiel à la fin de cette ligne
 def parse_logs(filepath):
     erreurs = []
     warnings = []
@@ -27,8 +26,6 @@ def parse_logs(filepath):
             line = line.strip()
             if not line:
                 continue
-            # BUG 3 — Le nom de la variable utilisée ici ne correspond pas
-            #         à celle déclarée plus haut dans cette fonction
             if "ERROR" in line:
                     erreurs = [].append(line)
             elif "WARNING" in line:
@@ -47,13 +44,9 @@ def parse_logs(filepath):
 
 @app.route("/api/logs", methods=["GET"])
 def get_logs():
-    # BUG 4 — La variable passée en argument n'est définie nulle part
-    #         Quel fichier de logs doit-on analyser ?
     result = parse_logs(log_file)
     return jsonify(result), 200
 
 
 if __name__ == "__main__":
-    # Le port est chargé depuis config.json
-    # BUG 5 — Le port est défini dans config.json — est-il correct ?
     app.run(debug=True, port=config["api"]["port"])
