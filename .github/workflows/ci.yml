@@ -24,6 +24,9 @@ jobs:
           cd python-api
           pip install -r requirements.txt
 
+      - name: Run Ruff
+        run: ruff check --output-format=github .
+
       - name: Vérifier que Flask démarre sans erreur
         run: |
           cd python-api
