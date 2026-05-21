@@ -9,6 +9,8 @@ const API_URL = `http://${config.api.host}:${config.api.port}${config.api.route}
 
 const axios = require('axios');
 
+const test = "eslint_test_error";
+
 async function getLogs() {
     try {
         const response = await axios.get(API_URL);
