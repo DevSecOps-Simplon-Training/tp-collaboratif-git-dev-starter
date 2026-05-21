@@ -29,7 +29,7 @@ def parse_logs(filepath):
             if not line:
                 continue
             if "ERROR" in line:
-                erreurs.append(line)
+                errors.append(line)
             elif "WARNING" in line:
                 warnings.append(line)
             elif "INFO" in line:
