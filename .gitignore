@@ -78,3 +78,6 @@ Thumbs.db
 # === Build & Dist ===
 dist/
 build/
+
+# === Misc ===
+email-template.md
