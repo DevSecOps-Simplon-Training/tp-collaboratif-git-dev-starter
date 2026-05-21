@@ -2,6 +2,7 @@
 // -----------------------------------------------------------------
 
 const path = require('path');
+const axios = require('axios');
 
 // Configuration partagée chargée depuis config.json (à la racine du projet)
 // BUG 5 (suite) — Si l'API Python ne répond pas, vérifiez le port dans config.json
