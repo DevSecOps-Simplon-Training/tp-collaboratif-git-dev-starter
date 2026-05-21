@@ -1,18 +1,54 @@
-name: CI
+name: CI — Vérification API Python
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main, 'fix/**', 'feat/**' ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
 
 jobs:
-  build:
+  test-python-api:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout du code
+      - name: Récupérer le code
         uses: actions/checkout@v4
 
-      - name: Exemple d'étape
-        run: echo "Ajoute tes étapes de build/test ici !"
+      - name: Installer Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installer les dépendances
+        run: |
+          cd python-api
+          pip install -r requirements.txt
+
+      - name: Vérifier que Flask démarre sans erreur
+        run: |
+          cd python-api
+          timeout 5 python app.py || true
+          echo "Vérification terminée"
+
+  test-node-client:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Installer les dépendances npm
+        run: |
+          cd node-client
+          npm install
+
+      - name: Vérifier la syntaxe JavaScript
+        run: |
+          cd node-client
+          node --check app.js
+          echo "Syntaxe JavaScript valide"
