@@ -11,7 +11,7 @@ with open(config_path, 'r') as f:
 
 # -------------------------------------------------------
 # Analyse un fichier de logs serveur et retourne
-# le nombre d'erreurs, warnings et infos détectés.
+# le nombre d'errors, warnings et infos détectés.
 # -------------------------------------------------------
 
 def parse_logs(filepath):
@@ -32,10 +32,10 @@ def parse_logs(filepath):
                 infos.append(line)
 
     return {
-        "error_count": len(erreurs),
+        "error_count": len(errors),
         "warning_count": len(warnings),
         "info_count": len(infos),
-        "errors": erreurs,
+        "errors": errors,
         "warnings": warnings
     }
 
