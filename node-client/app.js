@@ -9,7 +9,7 @@ const config = require(path.join(__dirname, '..', 'config.json'));
 const API_URL = `http://${config.api.host}:${config.api.port}${config.api.route}`;
 
 // BUG 6 — Le nom du module importé ici est incorrect
-const axioss = require('axioss');
+const axioss = require('axios');
 
 async function getLogs() {
     try {
@@ -17,8 +17,8 @@ async function getLogs() {
 
         // BUG 7 — La propriété pour accéder au corps de la réponse avec axios
         //         ne s'appelle pas .body — cherchez dans la doc axios comment
-        //         accéder aux données de la réponse
-        const data = response.body;
+        //         accéder aux données de la réponse body -> data
+        const data = response.data;
 
         console.log('\n========================================');
         console.log('   RAPPORT D\'ANALYSE DES LOGS AZURE    ');

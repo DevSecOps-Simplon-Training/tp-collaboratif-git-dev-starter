@@ -14,8 +14,8 @@ with open(config_path, 'r') as f:
 # le nombre d'erreurs, warnings et infos détectés.
 # -------------------------------------------------------
 
-# BUG 2 — Il manque un caractère essentiel à la fin de cette ligne
-def parse_logs(filepath)
+# BUG 2 — Il manque un caractère essentiel à la fin de cette ligne. add :
+def parse_logs(filepath):
     erreurs = []
     warnings = []
     infos = []
@@ -26,9 +26,9 @@ def parse_logs(filepath)
             if not line:
                 continue
             # BUG 3 — Le nom de la variable utilisée ici ne correspond pas
-            #         à celle déclarée plus haut dans cette fonction
+            #         à celle déclarée plus haut dans cette fonction. errors -> erreurs
             if "ERROR" in line:
-                errors.append(line)
+                erreurs.append(line)
             elif "WARNING" in line:
                 warnings.append(line)
             elif "INFO" in line:
@@ -46,12 +46,12 @@ def parse_logs(filepath)
 @app.route("/api/logs", methods=["GET"])
 def get_logs():
     # BUG 4 — La variable passée en argument n'est définie nulle part
-    #         Quel fichier de logs doit-on analyser ?
-    result = parse_logs(log_file)
+    #         Quel fichier de logs doit-on analyser ? server.log
+    result = parse_logs("server.log")
     return jsonify(result), 200
 
 
 if __name__ == "__main__":
     # Le port est chargé depuis config.json
-    # BUG 5 — Le port est défini dans config.json — est-il correct ?
+    # BUG 5 — Le port est défini dans config.json — est-il correct ? 50001 -> 5000
     app.run(debug=True, port=config["api"]["port"])

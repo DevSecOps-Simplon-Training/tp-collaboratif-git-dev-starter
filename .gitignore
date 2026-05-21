@@ -1,3 +1,8 @@
+# Node.js and Python build artifacts
+node_modules/
+__pycache__/
+*.pyc
+
 # Local .terraform directories
 .terraform/
 
