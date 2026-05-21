@@ -32,10 +32,10 @@ def parse_logs(filepath):
                 infos.append(line)
 
     return {
-        "error_count": len(errors),
+        "error_count": len(erreurs),
         "warning_count": len(warnings),
         "info_count": len(infos),
-        "errors": errors,
+        "errors": erreurs,
         "warnings": warnings
     }
 
