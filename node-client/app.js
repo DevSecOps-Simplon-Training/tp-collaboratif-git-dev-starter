@@ -13,7 +13,7 @@ const axios = require('axios');
 
 async function getLogs() {
     try {
-        const response = await axioss.get(API_URL);
+        const response = await axios.get(API_URL);
 
         // BUG 7 — La propriété pour accéder au corps de la réponse avec axios
         //         ne s'appelle pas .body — cherchez dans la doc axios comment
@@ -27,9 +27,9 @@ async function getLogs() {
         console.log(`  Avertissements     : ${data.warning_count}`);
         console.log(`  Messages info      : ${data.info_count}`);
         console.log('\n--- Detail des erreurs ---');
-        data.errors.forEach(err => console.log(` > ${err}`));
+        (data.errors || []).forEach(err => console.log(` > ${err}`));
         console.log('\n--- Detail des avertissements ---');
-        data.warnings.forEach(warn => console.log(` > ${warn}`));
+        (data.warnings || []).forEach(warn => console.log(` > ${warn}`));
         console.log('========================================\n');
 
     } catch (error) {
