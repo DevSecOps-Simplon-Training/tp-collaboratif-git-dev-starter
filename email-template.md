@@ -5,13 +5,13 @@
 ---
 
 **À :** responsable.technique@azuretech.fr
-**De :** [votre.prenom.nom@azuretech.fr]
+**De :** leith.zniber@azuretech.fr
 **Objet :** [À compléter — soyez précis et professionnel, ex: "Rapport de correction — scripts d'analyse de logs Azure"]
-**Date :** [date du jour]
+**Date :** 21/05/2029
 
 ---
 
-Bonjour [Prénom du responsable],
+Bonjour responsable.technique,
 
 **1. Contexte**
 
@@ -25,19 +25,20 @@ Bonjour [Prénom du responsable],
 
 | # | Fichier | Ligne | Type d'erreur | Description du problème |
 |---|---------|-------|---------------|--------------------------|
-| 1 | | | | |
-| 2 | | | | |
-| 3 | | | | |
-| 4 | | | | |
-| 5 | | | | |
+| 1 |requirements.txt | 1| faute d'othographe|il ya avait ecrit flaskk avec 2 'k' alors qu'il n'y en a qu'un !!!!!! c'est 'flask' mais c'est pas grave ça arrive les erreurs d'inattention  |
+| 2 | app.py | 19 | syntaxe | il manquait les ':' à la fin du def, le dev code sur notepad ?? normalement l'IDE montre l'erreur ici |
+| 3 | app.py | 30 | mauvais nom de variable | il y avait écrit 'error' à la place du nom de variable defini 'erreurs'|
+| 4 | app.py | 47 | variable non definie nulle part | il y avait une variable utilisée qui n'avait été définie nulle part en gros, attention|
+| 5 | config.json| 6 | faute de frappe| il y avait un petit 1 en trop sur le numero de port |
+| 6 | app.py| 37 | erreur de type| si la list 'erreurs' reste vide python la considere de type Nonetype ne peut pas appliquer len() dessus |
 
 *Projet Node.js — `node-client/` :*
 
 | # | Fichier | Ligne | Type d'erreur | Description du problème |
 |---|---------|-------|---------------|--------------------------|
-| 1 | | | | |
-| 2 | | | | |
-| 3 | | | | |
+| 1 | package.json | 10 | faute d'orthographe | encore ?? la derniere lettre ecrite deux fois comme pour le requirement.txt de python, ça fait beaucoup là non ?|
+| 2 | app.js | 10 | faute d'orthographe | pareil |
+| 3 | app.js | 16 | mauvais objet| l'objet 'body' existe pas sur 'answer' dans axios, l'equivalent c'est 'data' |
 
 ---
 
