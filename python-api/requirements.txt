@@ -1,2 +1,9 @@
+<<<<<<< HEAD
 # BUG 1 — Le nom du paquet ci-dessous est incorrect. Lisez attentivement.
+=======
+<<<<<<< HEAD
+=======
+# BUG 1 — Le nom du paquet ci-dessous est incorrect. Lisez attentivement.
+>>>>>>> 0a2dbd0 (fix: correct API configuration and dependencies, fix bugs in log parsing)
+>>>>>>> a3b789b (fix: correct API configuration and dependencies, fix bugs in log parsing)
 flask==3.0.0
