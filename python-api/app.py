@@ -1,8 +1,11 @@
 from flask import Flask, jsonify
 import json
 import os
+import os
 
 app = Flask(__name__)
+
+x = 1  # variable jamais utilisée → règle F841
 
 # Chargement de la configuration partagée (config.json à la racine du projet)
 config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'config.json')
