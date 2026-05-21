@@ -13,10 +13,7 @@ async function getLogs() {
     try {
         const response = await axios.get(API_URL);
 
-        // BUG 7 — La propriété pour accéder au corps de la réponse avec axios
-        //         ne s'appelle pas .body — cherchez dans la doc axios comment
-        //         accéder aux données de la réponse
-        const data = response.body;
+        const data = response.data;
 
         console.log('\n========================================');
         console.log('   RAPPORT D\'ANALYSE DES LOGS AZURE    ');
