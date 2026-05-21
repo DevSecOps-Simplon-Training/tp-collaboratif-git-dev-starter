@@ -32,7 +32,7 @@ def parse_logs(filepath):
             # BUG 3 — Le nom de la variable utilisée ici ne correspond pas
             #         à celle déclarée plus haut dans cette fonction
             if "ERROR" in line:
-                errors.append(line)
+                erreurs.append(line)
             elif "WARNING" in line:
                 warnings.append(line)
             elif "INFO" in line:
