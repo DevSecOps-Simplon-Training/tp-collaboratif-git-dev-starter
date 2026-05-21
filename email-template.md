@@ -15,7 +15,8 @@ Bonjour responsable.technique,
 
 **1. Contexte**
 
-[Décrivez en 2-3 phrases : quel projet, quels scripts étaient en erreur, dans quel environnement vous avez travaillé]
+Pour la partie de rapports des logs il y avait quelques bugs sur l'API python et le client Node qui affiche le dit rapport, pour info j'utilise ces versions sur mon environement : Python 3.14.5, node v24.15.0, npm 11.12.1 .
+Les bugs sont à présent résolus
 
 ---
 
@@ -46,14 +47,15 @@ Bonjour responsable.technique,
 
 [Pour chaque bug, expliquez en une phrase ce que vous avez changé ET pourquoi c'est correct.]
 
-- Bug 1 :
-- Bug 2 :
-- Bug 3 :
-- Bug 4 :
-- Bug 5 :
-- Bug 6 :
-- Bug 7 :
-- Bug 8 :
+- Bug 1 : corrigé la faute d'orthographe (enlever un 'k')
+- Bug 2 : corrigé la syntaxe (ajouté un ':' à la fin de la ligne)
+- Bug 3 : corrigé le nom de la variable (remplacé 'error' par 'erreurs')
+- Bug 4 : ajouté la definition de la variable manquante ('log_file = "./server.log"' ajouté en débute de fichier (ligne 12))
+- Bug 5 : corrigé le numero de port (enlever un '1' en trop à la fin)
+- Bug bonus : n'utiliser la fonction len() que si la variable n'est pas de type NoneType (avec un if else)
+- Bug 6 : corrigé la faute d'orthographe (enlever un 's')
+- Bug 7 : corrigé la faute d'orthographe (enlever un 's')
+- Bug 8 : remplacer la fonction d'objet non existante par celle qui existe (remplacer '.body' par '.data')
 
 ---
 
@@ -62,10 +64,10 @@ Bonjour responsable.technique,
 [Décrivez les commandes que vous avez exécutées pour confirmer que tout fonctionne.
 Incluez le résultat attendu vs le résultat obtenu.]
 
-- Commande testée :
-- Résultat obtenu :
-- Résultat attendu :
-- Validation : ✅ / ❌
+- Commande testée : ```python app.py``` ```curl http://localhost:5000/api/logs``` ```node app.js```
+- Résultat obtenu : tout marche (j'ai un peu la flemme de faire les copier coller)
+- Résultat attendu : tout marche
+- Validation : ✅ 
 
 ---
 
@@ -86,6 +88,6 @@ Incluez le résultat attendu vs le résultat obtenu.]
 
 Cordialement,
 
-[Prénom Nom]
+Leith Zniber
 Développeur DevSecOps — Promotion Azure, Simplon
 [votre.email@azuretech.fr]
