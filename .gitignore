@@ -44,3 +44,4 @@ terraform.rc
 # planout
 
 .DS_Store
+node-client/node_modules/
