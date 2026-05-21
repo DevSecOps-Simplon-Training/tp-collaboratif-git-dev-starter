@@ -45,4 +45,4 @@ terraform.rc
 
 .DS_Store
 node_modules/
-email-templates.md
+email-template.md
