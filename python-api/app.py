@@ -5,8 +5,10 @@ import os
 app = Flask(__name__)
 
 # Chargement de la configuration partagée (config.json à la racine du projet)
-config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'config.json')
-with open(config_path, 'r') as f:
+config_path = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "config.json"
+)
+with open(config_path, "r") as f:
     config = json.load(f)
 
 # -------------------------------------------------------
@@ -14,8 +16,9 @@ with open(config_path, 'r') as f:
 # le nombre d'erreurs, warnings et infos détectés.
 # -------------------------------------------------------
 
+
 # BUG 2 — Il manque un caractère essentiel à la fin de cette ligne
-def parse_logs(filepath)
+def parse_logs(filepath):
     erreurs = []
     warnings = []
     infos = []
@@ -39,7 +42,7 @@ def parse_logs(filepath)
         "warning_count": len(warnings),
         "info_count": len(infos),
         "errors": erreurs,
-        "warnings": warnings
+        "warnings": warnings,
     }
 
 
