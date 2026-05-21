@@ -44,3 +44,37 @@ terraform.rc
 # planout
 
 .DS_Store
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.python-version
+
+# === Node.js ===
+node_modules/
+npm-debug.log*
+.yarn/errors
+
+# === Logs & Data ===
+*.log
+logs/
+
+# === IDE & OS ===
+.idea/
+.vscode/
+*.swp
+*.swo
+Thumbs.db
+
+# === Config locale ===
+.env
+.env.*
+!.env.example
+
+# === Build & Dist ===
+dist/
+build/
