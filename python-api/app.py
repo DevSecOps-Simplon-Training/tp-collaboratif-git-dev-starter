@@ -15,7 +15,7 @@ with open(config_path, 'r') as f:
 # -------------------------------------------------------
 
 def parse_logs(filepath):
-    erreurs = []
+    errors = []
     warnings = []
     infos = []
 
@@ -24,8 +24,6 @@ def parse_logs(filepath):
             line = line.strip()
             if not line:
                 continue
-            # BUG 3 — Le nom de la variable utilisée ici ne correspond pas
-            #         à celle déclarée plus haut dans cette fonction
             if "ERROR" in line:
                 errors.append(line)
             elif "WARNING" in line:
