@@ -15,8 +15,8 @@ with open(config_path, 'r') as f:
 # -------------------------------------------------------
 
 # BUG 2 — Il manque un caractère essentiel à la fin de cette ligne
-def parse_logs(filepath)
-    erreurs = []
+def parse_logs(filepath):
+    errors = []
     warnings = []
     infos = []
 
@@ -35,10 +35,10 @@ def parse_logs(filepath)
                 infos.append(line)
 
     return {
-        "error_count": len(erreurs),
+        "error_count": len(errors),
         "warning_count": len(warnings),
         "info_count": len(infos),
-        "errors": erreurs,
+        "errors": errors,
         "warnings": warnings
     }
 
@@ -47,7 +47,7 @@ def parse_logs(filepath)
 def get_logs():
     # BUG 4 — La variable passée en argument n'est définie nulle part
     #         Quel fichier de logs doit-on analyser ?
-    result = parse_logs(log_file)
+    result = parse_logs(server.log)
     return jsonify(result), 200
 
 
