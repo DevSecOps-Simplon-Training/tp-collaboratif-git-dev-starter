@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 # Chargement de la configuration partagée (config.json à la racine du projet)
 config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'config.json')
+
 with open(config_path, 'r') as f:
     config = json.load(f)
 
@@ -14,8 +15,7 @@ with open(config_path, 'r') as f:
 # le nombre d'erreurs, warnings et infos détectés.
 # -------------------------------------------------------
 
-# BUG 2 — Il manque un caractère essentiel à la fin de cette ligne
-def parse_logs(filepath)
+def parse_logs(filepath):
     erreurs = []
     warnings = []
     infos = []
@@ -25,10 +25,8 @@ def parse_logs(filepath)
             line = line.strip()
             if not line:
                 continue
-            # BUG 3 — Le nom de la variable utilisée ici ne correspond pas
-            #         à celle déclarée plus haut dans cette fonction
             if "ERROR" in line:
-                errors.append(line)
+                erreurs.append(line)
             elif "WARNING" in line:
                 warnings.append(line)
             elif "INFO" in line:
@@ -45,8 +43,8 @@ def parse_logs(filepath)
 
 @app.route("/api/logs", methods=["GET"])
 def get_logs():
-    # BUG 4 — La variable passée en argument n'est définie nulle part
-    #         Quel fichier de logs doit-on analyser ?
+
+    log_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".", "server.log")
     result = parse_logs(log_file)
     return jsonify(result), 200
 
