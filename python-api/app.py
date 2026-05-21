@@ -15,7 +15,7 @@ with open(config_path, 'r') as f:
 # -------------------------------------------------------
 
 # BUG 2 — Il manque un caractère essentiel à la fin de cette ligne
-def parse_logs(filepath)
+def parse_logs(filepath):
     erreurs = []
     warnings = []
     infos = []
@@ -28,7 +28,7 @@ def parse_logs(filepath)
             # BUG 3 — Le nom de la variable utilisée ici ne correspond pas
             #         à celle déclarée plus haut dans cette fonction
             if "ERROR" in line:
-                errors.append(line)
+                erreurs.append(line)
             elif "WARNING" in line:
                 warnings.append(line)
             elif "INFO" in line:
@@ -47,11 +47,15 @@ def parse_logs(filepath)
 def get_logs():
     # BUG 4 — La variable passée en argument n'est définie nulle part
     #         Quel fichier de logs doit-on analyser ?
-    result = parse_logs(log_file)
+    result = parse_logs("server.log")
     return jsonify(result), 200
+
+@app.route("/")
+def home():
+    return "API Flask fonctionne"
 
 
 if __name__ == "__main__":
     # Le port est chargé depuis config.json
     # BUG 5 — Le port est défini dans config.json — est-il correct ?
-    app.run(debug=True, port=config["api"]["port"])
+       app.run(debug=True, port=config["api"]["port"])
