@@ -109,7 +109,7 @@ Incluez le résultat attendu vs le résultat obtenu.]
 
 **5. Lien vers la Pull Request**
 
-[Insérez ici l'URL complète de votre PR GitHub]
+https://github.com/DevSecOps-Simplon-Training/tp-collaboratif-git-dev-starter/pull/2
 
 ---
 
