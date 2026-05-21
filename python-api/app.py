@@ -28,7 +28,7 @@ def parse_logs(filepath):
             # BUG 3 — Le nom de la variable utilisée ici ne correspond pas
             #         à celle déclarée plus haut dans cette fonction
             if "ERROR" in line:
-                errors.append(line)
+                erreurs.append(line)
             elif "WARNING" in line:
                 warnings.append(line)
             elif "INFO" in line:
@@ -47,7 +47,7 @@ def parse_logs(filepath):
 def get_logs():
     # BUG 4 — La variable passée en argument n'est définie nulle part
     #         Quel fichier de logs doit-on analyser ?
-    result = parse_logs(log_file)
+    result = parse_logs(config["log_file"])
     return jsonify(result), 200
 
 
