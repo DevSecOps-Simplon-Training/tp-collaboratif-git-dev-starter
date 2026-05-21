@@ -11,7 +11,7 @@ with open(config_path, 'r') as f:
 
 # -------------------------------------------------------
 # Analyse un fichier de logs serveur et retourne
-# le nombre d'erreurs, warnings et infos détectés.
+# le nombre d'errors, warnings et infos détectés.
 # -------------------------------------------------------
 
     log_file = config["api"]["log_file"]
@@ -26,8 +26,6 @@ def parse_logs(filepath):
             line = line.strip()
             if not line:
                 continue
-            # BUG 3 — Le nom de la variable utilisée ici ne correspond pas
-            #         à celle déclarée plus haut dans cette fonction
             if "ERROR" in line:
                 erreurs.append(line)
             elif "WARNING" in line:
@@ -36,23 +34,19 @@ def parse_logs(filepath):
                 infos.append(line)
 
     return {
-        "error_count": len(erreurs),
+        "error_count": len(errors),
         "warning_count": len(warnings),
         "info_count": len(infos),
-        "errors": erreurs,
+        "errors": errors,
         "warnings": warnings
     }
 
 
 @app.route("/api/logs", methods=["GET"])
 def get_logs():
-    # BUG 4 — La variable passée en argument n'est définie nulle part
-    #         Quel fichier de logs doit-on analyser ?
-    result = parse_logs(log_file)
+    result = parse_logs(config["api"]["log_file"])
     return jsonify(result), 200
 
 
 if __name__ == "__main__":
-    # Le port est chargé depuis config.json
-    # BUG 5 — Le port est défini dans config.json — est-il correct ?
     app.run(debug=True, port=config["api"]["port"])

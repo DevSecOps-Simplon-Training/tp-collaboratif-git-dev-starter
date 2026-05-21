@@ -4,7 +4,6 @@
 const path = require('path');
 
 // Configuration partagée chargée depuis config.json (à la racine du projet)
-// BUG 5 (suite) — Si l'API Python ne répond pas, vérifiez le port dans config.json
 const config = require(path.join(__dirname, '..', 'config.json'));
 const API_URL = `http://${config.api.host}:${config.api.port}${config.api.route}`;
 
