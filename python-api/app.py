@@ -14,7 +14,6 @@ with open(config_path, 'r') as f:
 # le nombre d'erreurs, warnings et infos détectés.
 # -------------------------------------------------------
 
-# BUG 2 — Il manque un caractère essentiel à la fin de cette ligne
 def parse_logs(filepath):
     erreurs = []
     warnings = []
