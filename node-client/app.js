@@ -9,7 +9,7 @@ const config = require(path.join(__dirname, '..', 'config.json'));
 const API_URL = `http://${config.api.host}:${config.api.port}${config.api.route}`;
 
 // BUG 6 — Le nom du module importé ici est incorrect
-const axioss = require('axioss');
+const axioss = require('axios');
 
 async function getLogs() {
     try {
