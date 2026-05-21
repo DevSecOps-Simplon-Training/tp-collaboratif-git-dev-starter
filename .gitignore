@@ -47,3 +47,6 @@ terraform.rc
 
 # Ignorer les .venv
 .venv
+
+# Ignorer le dossier node_modules
+node_modules
