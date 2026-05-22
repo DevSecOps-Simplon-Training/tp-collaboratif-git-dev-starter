@@ -2,7 +2,7 @@
   "projet": "TP-Git-Collaboratif",
   "version": "1.1.0",
   "promotion": "DevSecOps Azure — Simplon",
-  "apprenants": [],
+  "apprenants": ["..."],
   "api": {
     "port": 5000,
     "host": "localhost",
@@ -10,4 +10,3 @@
     "log_file": "server.log"
   }
 }
-
