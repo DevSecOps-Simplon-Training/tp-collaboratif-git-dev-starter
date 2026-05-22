@@ -44,6 +44,8 @@ def parse_logs(filepath):
 
 
 @app.route("/api/logs", methods=["GET"])
+# Health check endpoint — returns the current status of the API service,
+# including the project name, version, and port loaded from config.json
 @app.route("/api/health", methods=["GET"])
 def health():
     return (
