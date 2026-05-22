@@ -43,8 +43,6 @@ Tu trouveras ci-dessous le listing de l'ensemble des bugs détéctés.
 
 **3. Corrections apportées**
 
-[Pour chaque bug, expliquez en une phrase ce que vous avez changé ET pourquoi c'est correct.]
-
 - Bug 1 : correction de la syntaxe
 - Bug 2 : correction du nom de la variable 
 - Bug 3 : ajout de la variable log_files
@@ -58,9 +56,6 @@ Tu trouveras ci-dessous le listing de l'ensemble des bugs détéctés.
 
 **4. Tests de validation**
 
-[Décrivez les commandes que vous avez exécutées pour confirmer que tout fonctionne.
-Incluez le résultat attendu vs le résultat obtenu.]
-
 - Commande testée : 
 python app.py
 curl http://127.0.0.1:5000/api/logs
@@ -73,21 +68,23 @@ node app.js
 
 **5. Lien vers la Pull Request**
 
-[Insérez ici l'URL complète de votre PR GitHub]
+https://github.com/DevSecOps-Simplon-Training/tp-collaboratif-git-dev-starter/pull/10
 
 ---
 
 **6. Recommandations**
 
-[Proposez 1 ou 2 bonnes pratiques à adopter pour éviter ce type de bug à l'avenir.]
-
--
--
+Vérifier la cohérence des ports entre services
+Ajouter des tests automatisés
+Vérifier les versions des dépendances npm
+Utiliser des variables clairement nommées
+Ajouter une validation de présence des fichiers nécessaires
 
 ---
 
+
 Cordialement,
 
-[Prénom Nom]
+[Aicha ELOUADI]
 Développeur DevSecOps — Promotion Azure, Simplon
-[votre.email@azuretech.fr]
+[aicha.elouadi@azuretech.fr]
