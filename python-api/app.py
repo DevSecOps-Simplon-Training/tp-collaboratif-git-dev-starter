@@ -50,6 +50,25 @@ def get_logs():
     result = parse_logs(config["api"]["log_file"])
     return jsonify(result), 200
 
+@app.route("/api/stats", methods=["GET"])
+def get_stats():
+
+    result = parse_logs(config["api"]["log_file"])
+
+    critical_count = result["critical_count"]
+    errors_count = result["errors_count"]
+    warning_count = result["warning_count"]
+    infos_count = result["infos_count"]
+
+    total = critical_count + error_count + warning_count + info_count
+    
+    return jsonify({
+        "critical_count": critical_count,
+        "error_count":    error_count,
+        "warning_count":  warning_count,
+        "info_count":     info_count,
+        "total":          total
+    }), 200
 
 if __name__ == "__main__":
     app.run(debug=True, port=config["api"]["port"])
