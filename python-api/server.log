@@ -15,5 +15,8 @@
 2024-01-15 08:14:03 INFO  Alert sent to monitoring team via Azure Monitor
 2024-01-15 08:15:00 INFO  Scheduled maintenance check completed
 2024-01-15 08:16:30 WARNING SSL certificate expires in 14 days for api.azuretech.fr
+2024-01-15 08:18:00 CRITICAL Database connection pool exhausted — all 20 connections in use
 2024-01-15 08:18:55 INFO  Kubernetes pod restarted: api-deployment-7d9f8b-xkp2m
+2024-01-15 08:19:30 CRITICAL Azure Key Vault unreachable — secrets cannot be retrieved
 2024-01-15 08:20:00 INFO  Health check passed: all 3 replicas running
+2024-01-15 08:21:00 CRITICAL Disk full on /var/log — logging suspended

@@ -17,6 +17,7 @@ with open(config_path, "r") as f:
 # -------------------------------------------------------
 
 def parse_logs(filepath):
+    criticals = []
     errors = []
     warnings = []
     infos = []
@@ -26,7 +27,9 @@ def parse_logs(filepath):
             line = line.strip()
             if not line:
                 continue
-            if "ERROR" in line:
+            if "CRITICAL" in line:
+                criticals.append(line)
+            elif "ERROR" in line:
                 errors.append(line)
             elif "WARNING" in line:
                 warnings.append(line)
@@ -34,9 +37,11 @@ def parse_logs(filepath):
                 infos.append(line)
 
     return {
+        "critical_count": len(criticals),
         "error_count": len(errors),
         "warning_count": len(warnings),
         "info_count": len(infos),
+        "criticals": criticals,
         "errors": errors,
         "warnings": warnings,
     }
@@ -64,6 +69,25 @@ def get_logs():
     result = parse_logs(config["api"]["log_file"])
     return jsonify(result), 200
 
+@app.route("/api/stats", methods=["GET"])
+def get_stats():
+
+    result = parse_logs(config["api"]["log_file"])
+
+    critical_count = result["critical_count"]
+    error_count = result["error_count"]
+    warning_count = result["warning_count"]
+    info_count = result["info_count"]
+
+    total = critical_count + error_count + warning_count + info_count
+    
+    return jsonify({
+        "critical_count": critical_count,
+        "error_count":    error_count,
+        "warning_count":  warning_count,
+        "info_count":     info_count,
+        "total":          total
+    }), 200
 
 if __name__ == "__main__":
     app.run(debug=True, port=config["api"]["port"])

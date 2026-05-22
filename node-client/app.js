@@ -19,21 +19,26 @@ const CYAN   = '\x1b[36m';
 const RED    = '\x1b[31m';
 const YELLOW = '\x1b[33m';
 const GREEN  = '\x1b[32m';
-const WHITE  = '\x1b[37m'
+const WHITE  = '\x1b[37m';
+const PURPLE = '\x1b[35m';
 
 console.clear()
 
 // Second list contains key word to highlight in Red
-const RED_WORDS = /Azure Storage|Authentication failed|Database|timeout|insufficient permissions/i;
+const PURPLE_WORDS = /Disk full|Azure Key Vault unreachable|Database connection pool exhausted/i;
+
+// Second list contains key word to highlight in Red
+const RED_WORDS    = /Azure Storage|Authentication failed|Database|timeout|insufficient permissions/i;
 
 // First list contains key word to highlight in Yellow
-const LOG_LIST  = /Azure Storage|Authentication failed|Database|timeout|insufficient permissions|High memory|CPU usage|Disk space|SSL certificate/gi;
-
+const LOG_LIST = /Azure Storage|Authentication failed|timeout|insufficient permissions|High memory|CPU usage|Disk space|SSL certificate|Disk full|Azure Key Vault unreachable|Database connection pool exhausted|Database/gi;
 // Function to highlight important log patterns in red or yellow
 function highlightLog(text) {
-    return text.replace(LOG_LIST, match =>
-        RED_WORDS.test(match) ? RED + match + RESET : YELLOW + match + RESET
-    );
+    return text.replace(LOG_LIST, match => {
+        if (PURPLE_WORDS.test(match)) return PURPLE + match + RESET;
+        if (RED_WORDS.test(match))    return RED    + match + RESET;
+        return YELLOW + match + RESET;
+    });
 }
 
 async function getLogs() {
@@ -54,9 +59,18 @@ async function getLogs() {
         console.log(CYAN + '│  Version            : ' + WHITE + `${config.version || 'N/A'}` + RESET);
         console.log(CYAN + '│  Report generated at: ' + WHITE + `${now}` + RESET);
         console.log(CYAN + '│' + RESET);
+        if (data.critical_count > 0) {
+            console.log(CYAN + '│  !! CRITICAL !!     : ' + WHITE + `${data.critical_count}`   + RESET);
+        }
         console.log(CYAN + '│  Errors detected    : ' + WHITE + `${data.error_count}`   + RESET);
         console.log(CYAN + '│  Warnings           : ' + WHITE + `${data.warning_count}` + RESET);
         console.log(CYAN + '│  Info messages      : ' + WHITE + `${data.info_count}`    + RESET);
+        console.log(CYAN + '│' + RESET);
+
+        if (data.criticals && data.criticals.length > 0) {
+            console.log(CYAN + '│' + RESET + PURPLE + '  --- Critical incidents ---' + RESET);
+            data.criticals.forEach(crit => console.log(CYAN + '│  ' + PURPLE + '> ' + RESET + highlightLog(crit)));
+        }
         console.log(CYAN + '│' + RESET);
         console.log(CYAN + '│' + RED + '  --- Error details ---' + RESET);
         console.log(CYAN + '│' + RESET);
