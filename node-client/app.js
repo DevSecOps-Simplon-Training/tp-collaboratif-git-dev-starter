@@ -33,7 +33,6 @@ async function getLogs() {
         data.errors.forEach(err => console.log(` > ${err}`));
         console.log('\n--- Detail des avertissements ---');
         data.warnings.forEach(warn => console.log(` > ${warn}`));
-
         console.log('========================================\n');
 
     } catch (error) {
