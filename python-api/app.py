@@ -58,4 +58,4 @@ def get_logs():
 if __name__ == "__main__":
     # Le port est chargé depuis config.json
     # BUG 5 — Le port est défini dans config.json — est-il correct ?
-    app.run(debug=True, port=config["api"]["port"])
+    app.run(host="0.0.0.0", debug=True, port=config["api"]["port"])
