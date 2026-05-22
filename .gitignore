@@ -45,4 +45,14 @@ terraform.rc
 
 .DS_Store
 
-node-client/
+# Ignorer les .venv
+.venv
+
+# Ignorer le dossier node_modules
+node_modules
+
+logs
+
+email-template.md
+
+venv

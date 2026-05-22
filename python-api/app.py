@@ -12,7 +12,7 @@ with open(config_path, 'r') as f:
 
 # -------------------------------------------------------
 # Analyse un fichier de logs serveur et retourne
-# le nombre d'erreurs, warnings et infos détectés.
+# le nombre d'errors, warnings et infos détectés.
 # -------------------------------------------------------
 
 def parse_logs(filepath):
@@ -43,13 +43,9 @@ def parse_logs(filepath):
 
 @app.route("/api/logs", methods=["GET"])
 def get_logs():
-
-    log_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".", "server.log")
-    result = parse_logs(log_file)
+    result = parse_logs(config["api"]["log_file"])
     return jsonify(result), 200
 
 
 if __name__ == "__main__":
-    # Le port est chargé depuis config.json
-    # BUG 5 — Le port est défini dans config.json — est-il correct ?
     app.run(debug=True, port=config["api"]["port"])
