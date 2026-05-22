@@ -14,6 +14,9 @@ with open(config_path, 'r') as f:
 # le nombre d'errors, warnings et infos détectés.
 # -------------------------------------------------------
 
+# BUG 2 — Il manque un caractère essentiel à la fin de cette ligne
+def parse_logs(filepath):
+    erreurs = []
 def parse_logs(filepath):
     errors = []
     warnings = []
@@ -42,6 +45,10 @@ def parse_logs(filepath):
 
 @app.route("/api/logs", methods=["GET"])
 def get_logs():
+    # BUG 4 — La variable passée en argument n'est définie nulle part
+    #         Quel fichier de logs doit-on analyser ?
+    log_file ="serveur.log"
+    result = parse_logs(log_file)
     result = parse_logs(config["api"]["log_file"])
     return jsonify(result), 200
 
