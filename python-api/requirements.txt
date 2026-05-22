@@ -1,2 +1,1 @@
-# BUG 1 — Le nom du paquet ci-dessous est incorrect. Lisez attentivement.
 flask==3.0.0
