@@ -7,11 +7,11 @@ const path = require('path');
 const config = require(path.join(__dirname, '..', 'config.json'));
 const API_URL = `http://${config.api.host}:${config.api.port}${config.api.route}`;
 
-const axios = require('axios');
+const axioss = require('axios');
 
 async function getLogs() {
     try {
-        const response = await axios.get(API_URL);
+        const response = await axioss.get(API_URL);
 
         const data = response.data;
 
