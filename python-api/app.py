@@ -41,6 +41,14 @@ def parse_logs(filepath):
 
 
 @app.route("/api/logs", methods=["GET"])
+@app.route("/api/health", methods=["GET"])
+def health():
+    return jsonify({
+        "status": "ok",
+        "service": config["projet"],
+        "version": config.get("version", "1.0.0"),
+        "port": config["api"]["port"]
+    }), 200
 def get_logs():
     result = parse_logs(config["api"]["log_file"])
     return jsonify(result), 200
