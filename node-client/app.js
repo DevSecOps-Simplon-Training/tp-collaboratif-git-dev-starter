@@ -11,9 +11,8 @@ const axioss = require('axios');
 
 async function getLogs() {
     try {
-        const response = await axios.get(API_URL);
+        const response = await axioss.get(API_URL);
 
-        const data = response.data;
         const data = response.data;
 
         console.log('\n========================================');
