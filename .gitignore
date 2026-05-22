@@ -56,3 +56,5 @@ logs
 email-template.md
 
 venv
+
+__pycache__

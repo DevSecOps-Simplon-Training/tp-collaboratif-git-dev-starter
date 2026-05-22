@@ -14,5 +14,15 @@ jobs:
       - name: Checkout du code
         uses: actions/checkout@v4
 
-      - name: Exemple d'étape
-        run: echo "Ajoute tes étapes de build/test ici !"
+      - name: Installation de Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Installation des dépendances
+        run: pip install -r requirements.txt
+        working-directory: python-api
+
+      - name: Lancement des tests
+        run: python -m pytest tests/ -v
+        working-directory: python-api
