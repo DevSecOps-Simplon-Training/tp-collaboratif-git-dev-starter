@@ -18,13 +18,22 @@ async function getLogs() {
         console.log('\n========================================');
         console.log('   RAPPORT D\'ANALYSE DES LOGS AZURE    ');
         console.log('========================================');
+        if (data.critical_count > 0) {
+            console.log(`  !! CRITIQUE !!     : ${data.critical_count}`);
+        }
         console.log(`  Erreurs detectees  : ${data.error_count}`);
         console.log(`  Avertissements     : ${data.warning_count}`);
         console.log(`  Messages info      : ${data.info_count}`);
+
+        if (data.criticals && data.criticals.length > 0) {
+            console.log('\n--- Incidents critiques ---');
+            data.criticals.forEach(c => console.log(` !! ${c}`));
+        }
         console.log('\n--- Detail des erreurs ---');
         data.errors.forEach(err => console.log(` > ${err}`));
         console.log('\n--- Detail des avertissements ---');
         data.warnings.forEach(warn => console.log(` > ${warn}`));
+
         console.log('========================================\n');
 
     } catch (error) {
