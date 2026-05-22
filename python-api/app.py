@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 # Chargement de la configuration partagée (config.json à la racine du projet)
 config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'config.json')
+
 with open(config_path, 'r') as f:
     config = json.load(f)
 
@@ -15,7 +16,7 @@ with open(config_path, 'r') as f:
 # -------------------------------------------------------
 
 def parse_logs(filepath):
-    errors = []
+    erreurs = []
     warnings = []
     infos = []
 
@@ -25,17 +26,17 @@ def parse_logs(filepath):
             if not line:
                 continue
             if "ERROR" in line:
-                errors.append(line)
+                erreurs.append(line)
             elif "WARNING" in line:
                 warnings.append(line)
             elif "INFO" in line:
                 infos.append(line)
 
     return {
-        "error_count": len(errors),
+        "error_count": len(erreurs),
         "warning_count": len(warnings),
         "info_count": len(infos),
-        "errors": errors,
+        "errors": erreurs,
         "warnings": warnings
     }
 
