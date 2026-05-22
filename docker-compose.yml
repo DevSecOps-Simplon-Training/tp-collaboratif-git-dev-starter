@@ -1,14 +1,17 @@
 version: '3.8'
-
 services:
   python-api:
     build: ./python-api
     ports:
       - "5001:5000"
     container_name: log-analyser-api
+    volumes:
+      - ./config.json:/config.json
 
   node-client:
     build: ./node-client
     depends_on:
       - python-api
     container_name: log-analyser-client
+    volumes:
+      - ./config.json:/config.json
