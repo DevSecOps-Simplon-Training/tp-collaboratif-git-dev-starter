@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "projet": "TP-Git-Collaboratif",
   "promotion": "DevSecOps Azure — Simplon",
@@ -9,3 +10,16 @@
     "log_file": "server.log"
   }
 }
+=======
+{
+  "projet": "TP-Git-Collaboratif",
+  "promotion": "DevSecOps Azure — Simplon",
+  "apprenants": [],
+  "api": {
+    "port": 50001,
+    "host": "localhost",
+    "route": "/api/logs",
+    "log_file": "server.log"
+  }
+}
+>>>>>>> parent of 5c8c687 (chore: add .venv to .gitignore)
