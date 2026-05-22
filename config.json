@@ -4,7 +4,15 @@
   "apprenants": [],
   "api": {
     "port": 5000,
+<<<<<<< HEAD
+    "host": "127.0.0.1",
+=======
+<<<<<<< HEAD
     "host": "localhost",
+=======
+    "host": "127.0.0.1",
+>>>>>>> 0a2dbd0 (fix: correct API configuration and dependencies, fix bugs in log parsing)
+>>>>>>> a3b789b (fix: correct API configuration and dependencies, fix bugs in log parsing)
     "route": "/api/logs",
     "log_file": "server.log"
   }

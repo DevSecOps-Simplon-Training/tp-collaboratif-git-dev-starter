@@ -7,12 +7,14 @@ const path = require('path');
 const config = require(path.join(__dirname, '..', 'config.json'));
 const API_URL = `http://${config.api.host}:${config.api.port}${config.api.route}`;
 
+// BUG 6 — Le nom du module importé ici est incorrect
 const axios = require('axios');
 
 async function getLogs() {
     try {
         const response = await axios.get(API_URL);
 
+        // BUG 7 — Fixed: axios uses .data for response body
         const data = response.data;
 
         console.log('\n========================================');

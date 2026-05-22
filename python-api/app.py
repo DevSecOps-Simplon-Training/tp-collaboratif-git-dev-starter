@@ -14,18 +14,33 @@ with open(config_path, 'r') as f:
 # le nombre d'errors, warnings et infos détectés.
 # -------------------------------------------------------
 
+<<<<<<< HEAD
+    log_file = config["api"]["log_file"]
+
+# BUG 2 — Il manque un caractère essentiel à la fin de cette ligne
+def parse_logs(filepath):
+    erreurs = []
+=======
+<<<<<<< HEAD
 def parse_logs(filepath):
     errors = []
+=======
+    log_file = config["api"]["log_file"]
+
+# BUG 2 — Il manque un caractère essentiel à la fin de cette ligne
+def parse_logs(filepath):
+    erreurs = []
+>>>>>>> 0a2dbd0 (fix: correct API configuration and dependencies, fix bugs in log parsing)
+>>>>>>> a3b789b (fix: correct API configuration and dependencies, fix bugs in log parsing)
     warnings = []
     infos = []
-
     with open(filepath, "r") as f:
         for line in f:
             line = line.strip()
             if not line:
                 continue
             if "ERROR" in line:
-                errors.append(line)
+                erreurs.append(line)
             elif "WARNING" in line:
                 warnings.append(line)
             elif "INFO" in line:
