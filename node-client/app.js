@@ -23,9 +23,13 @@ const WHITE  = '\x1b[37m'
 
 console.clear()
 
+// Second list contains key word to highlight in Red
 const RED_WORDS = /Azure Storage|Authentication failed|Database|timeout|insufficient permissions/i;
+
+// First list contains key word to highlight in Yellow
 const LOG_LIST  = /Azure Storage|Authentication failed|Database|timeout|insufficient permissions|High memory|CPU usage|Disk space|SSL certificate/gi;
 
+// Function to highlight important log patterns in red or yellow
 function highlightLog(text) {
     return text.replace(LOG_LIST, match =>
         RED_WORDS.test(match) ? RED + match + RESET : YELLOW + match + RESET
@@ -34,9 +38,12 @@ function highlightLog(text) {
 
 async function getLogs() {
     try {
+        // Fetch log summary data from the Python API
         const response = await axios.get(API_URL);
+        // Extract data from the API response
         const data = response.data;
 
+        // Get current date and time in French locale format
         const now = new Date().toLocaleString('fr-FR');
 
 
