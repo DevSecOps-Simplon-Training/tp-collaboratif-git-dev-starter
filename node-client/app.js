@@ -11,7 +11,11 @@ const axios = require('axios');
 
 async function getLogs() {
     try {
-        const response = await axios.get(API_URL);
+        const response = await axios.get(API_URL, {
+            headers: {
+                'X-API-Key': `${config.api.key}`
+            }
+        });
 
         const data = response.data;
 

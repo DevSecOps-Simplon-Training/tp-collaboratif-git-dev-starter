@@ -6,6 +6,7 @@
     "port": 5000,
     "host": "localhost",
     "route": "/api/logs",
-    "log_file": "server.log"
+    "log_file": "server.log",
+    "key": "devsecops-simplon-2024"
   }
 }

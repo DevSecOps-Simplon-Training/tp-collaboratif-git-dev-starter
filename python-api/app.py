@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import json
 import os
 
@@ -39,9 +39,17 @@ def parse_logs(filepath):
         "warnings": warnings
     }
 
+def verifier_cle_api():
+    cle = request.headers.get("X-API-Key")
+    if cle != config["api"]["key"]:
+        return jsonify({"erreur": "Clé API invalide ou manquante"}), 401
+    return None
 
 @app.route("/api/logs", methods=["GET"])
 def get_logs():
+    erreur = verifier_cle_api()
+    if erreur:
+        return erreur
     result = parse_logs(config["api"]["log_file"])
     return jsonify(result), 200
 
