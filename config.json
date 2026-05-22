@@ -3,7 +3,7 @@
   "promotion": "DevSecOps Azure — Simplon",
   "apprenants": [],
   "api": {
-    "port": 5001,
+    "port": 5000,
     "host": "python-api",
     "route": "/api/logs",
     "log_file": "server.log"
