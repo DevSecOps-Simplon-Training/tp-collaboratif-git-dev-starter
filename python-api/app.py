@@ -47,7 +47,7 @@ def parse_logs(filepath):
 def get_logs():
     # BUG 4 — La variable passée en argument n'est définie nulle part
     #         Quel fichier de logs doit-on analyser ? server.log
-    result = parse_logs("server.log")
+    result = parse_logs(config["api"]["log_file"])
     return jsonify(result), 200
 
 
