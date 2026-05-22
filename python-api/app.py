@@ -5,14 +5,17 @@ import os
 app = Flask(__name__)
 
 # Chargement de la configuration partagée (config.json à la racine du projet)
-config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'config.json')
-with open(config_path, 'r') as f:
+config_path = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "config.json"
+)
+with open(config_path, "r") as f:
     config = json.load(f)
 
 # -------------------------------------------------------
 # Analyse un fichier de logs serveur et retourne
 # le nombre d'errors, warnings et infos détectés.
 # -------------------------------------------------------
+
 
 def parse_logs(filepath):
     errors = []
@@ -36,11 +39,26 @@ def parse_logs(filepath):
         "warning_count": len(warnings),
         "info_count": len(infos),
         "errors": errors,
-        "warnings": warnings
+        "warnings": warnings,
     }
 
 
 @app.route("/api/logs", methods=["GET"])
+@app.route("/api/health", methods=["GET"])
+def health():
+    return (
+        jsonify(
+            {
+                "status": "ok",
+                "service": config["projet"],
+                "version": config.get("version", "1.0.0"),
+                "port": config["api"]["port"],
+            }
+        ),
+        200,
+    )
+
+
 def get_logs():
     result = parse_logs(config["api"]["log_file"])
     return jsonify(result), 200
