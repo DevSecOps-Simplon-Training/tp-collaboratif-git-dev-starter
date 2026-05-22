@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 services:
   python-api:
     build: ./python-api
@@ -7,11 +7,17 @@ services:
     container_name: log-analyser-api
     volumes:
       - ./config.json:/config.json
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/logs"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
 
   node-client:
     build: ./node-client
     depends_on:
-      - python-api
+      python-api:
+        condition: service_healthy
     container_name: log-analyser-client
     volumes:
       - ./config.json:/config.json
