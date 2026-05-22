@@ -3,16 +3,20 @@
 
 const path = require('path');
 
+
 // Configuration partagée chargée depuis config.json (à la racine du projet)
 const config = require(path.join(__dirname, '..', 'config.json'));
 const API_URL = `http://${config.api.host}:${config.api.port}${config.api.route}`;
 
+// BUG 6 — Le nom du module importé ici est incorrect
 const axios = require('axios');
-
 async function getLogs() {
     try {
         const response = await axios.get(API_URL);
 
+        // BUG 7 — La propriété pour accéder au corps de la réponse avec axios
+        //         ne s'appelle pas .body — cherchez dans la doc axios comment
+        //         accéder aux données de la réponse
         const data = response.data;
 
         console.log('\n========================================');
@@ -22,9 +26,9 @@ async function getLogs() {
         console.log(`  Avertissements     : ${data.warning_count}`);
         console.log(`  Messages info      : ${data.info_count}`);
         console.log('\n--- Detail des erreurs ---');
-        data.errors.forEach(err => console.log(` > ${err}`));
+        (data.errors || []).forEach(err => console.log(` > ${err}`));
         console.log('\n--- Detail des avertissements ---');
-        data.warnings.forEach(warn => console.log(` > ${warn}`));
+        (data.warnings || []).forEach(warn => console.log(` > ${warn}`));
         console.log('========================================\n');
 
     } catch (error) {
