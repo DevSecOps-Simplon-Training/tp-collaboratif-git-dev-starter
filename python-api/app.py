@@ -11,11 +11,11 @@ with open(config_path, 'r') as f:
 
 # -------------------------------------------------------
 # Analyse un fichier de logs serveur et retourne
-# le nombre d'erreurs, warnings et infos détectés.
+# le nombre d'errors, warnings et infos détectés.
 # -------------------------------------------------------
 
 def parse_logs(filepath):
-    erreurs = []
+    errors = []
     warnings = []
     infos = []
 
@@ -32,10 +32,10 @@ def parse_logs(filepath):
                 infos.append(line)
 
     return {
-        "error_count": len(erreurs),
+        "error_count": len(errors),
         "warning_count": len(warnings),
         "info_count": len(infos),
-        "errors": erreurs,
+        "errors": errors,
         "warnings": warnings
     }
 
@@ -47,5 +47,4 @@ def get_logs():
 
 
 if __name__ == "__main__":
-    # Le port est chargé depuis config.json
     app.run(debug=True, port=config["api"]["port"])

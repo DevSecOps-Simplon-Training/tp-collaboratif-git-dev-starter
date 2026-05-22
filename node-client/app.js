@@ -2,6 +2,8 @@
 // -----------------------------------------------------------------
 
 const path = require('path');
+
+// Configuration partagée chargée depuis config.json (à la racine du projet)
 const config = require(path.join(__dirname, '..', 'config.json'));
 const API_URL = `http://${config.api.host}:${config.api.port}${config.api.route}`;
 
@@ -10,6 +12,7 @@ const axios = require('axios');
 async function getLogs() {
     try {
         const response = await axios.get(API_URL);
+
         const data = response.data;
 
         console.log('\n========================================');
