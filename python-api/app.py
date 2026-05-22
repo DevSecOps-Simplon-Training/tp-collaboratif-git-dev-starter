@@ -56,9 +56,9 @@ def get_stats():
     result = parse_logs(config["api"]["log_file"])
 
     critical_count = result["critical_count"]
-    errors_count = result["errors_count"]
+    error_count = result["error_count"]
     warning_count = result["warning_count"]
-    infos_count = result["infos_count"]
+    info_count = result["info_count"]
 
     total = critical_count + error_count + warning_count + info_count
     
