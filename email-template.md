@@ -1,8 +1,3 @@
-# Template — Rapport de débogage par email
-
-> Complétez chaque section entre crochets [ ]. Supprimez les instructions en italique avant d'envoyer.
-
----
 
 **À :** responsable.technique@azuretech.fr
 **De :** aicha.elouadi@azuretech.fr
@@ -21,7 +16,7 @@ Tu trouveras ci-dessous le listing de l'ensemble des bugs détéctés.
 
 **2. Bugs identifiés**
 
-*Projet Python — `python-api/` :*
+*Projet App.py — `app.py/` :*
 
 | # | Fichier | Ligne | Type d'erreur | Description du problème |
 |---|---------|-------|---------------|--------------------------|
@@ -85,6 +80,6 @@ Ajouter une validation de présence des fichiers nécessaires
 
 Cordialement,
 
-[Aicha ELOUADI]
+Aicha ELOUADI
 Développeur DevSecOps — Promotion Azure, Simplon
-[aicha.elouadi@azuretech.fr]
+aicha.elouadi@azuretech.fr
