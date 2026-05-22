@@ -1,3 +1,6 @@
+# Ignore node_modules and dependency directories
+node_modules/
+
 # Local .terraform directories
 .terraform/
 

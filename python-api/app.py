@@ -15,7 +15,7 @@ with open(config_path, 'r') as f:
 # -------------------------------------------------------
 
 def parse_logs(filepath):
-    errors = []
+    erreurs = []
     warnings = []
     infos = []
 
@@ -25,17 +25,17 @@ def parse_logs(filepath):
             if not line:
                 continue
             if "ERROR" in line:
-                errors.append(line)
+                erreurs.append(line)
             elif "WARNING" in line:
                 warnings.append(line)
             elif "INFO" in line:
                 infos.append(line)
 
     return {
-        "error_count": len(errors),
+        "error_count": len(erreurs),
         "warning_count": len(warnings),
         "info_count": len(infos),
-        "errors": errors,
+        "errors": erreurs,
         "warnings": warnings
     }
 
