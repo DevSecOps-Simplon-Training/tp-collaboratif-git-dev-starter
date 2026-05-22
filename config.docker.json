@@ -1,0 +1,11 @@
+{
+  "projet": "TP-Git-Collaboratif",
+  "promotion": "DevSecOps Azure — Simplon",
+  "apprenants": [],
+  "api": {
+    "port": 5000,
+    "host": "log-analyser-api",
+    "route": "/api/logs",
+    "log_file": "server.log"
+  }
+}
